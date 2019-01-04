@@ -655,7 +655,7 @@ def main(_):
 
     #path_to_C_log = '/mnt/lustre/panzheng/pyrun/view_syn/log_v5_wf/'
     #path_to_C_log = '/home/SENSETIME/panzheng/Documents/pz/view_syn/log_v2/'
-    path_to_C_model_load = '/home/SENSETIME/panzheng/Documents/pz/view_syn/save_v5_ntne/-2000'
+    path_to_C_model_load = '/home/SENSETIME/panzheng/Documents/pz/view_syn/model-2000iter/-2000'
     #path_to_C_model_save = '/mnt/lustre/panzheng/pyrun/view_syn/save_v5_wf/'
     #path_to_C_model_save = '/home/SENSETIME/panzheng/Documents/pz/view_syn/save'
 
