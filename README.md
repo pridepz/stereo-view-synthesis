@@ -11,6 +11,8 @@
     
   Image frames are obtained using opencv with the given timestamps and the videos are downloaded using pytube.  
     
+  get_frame.py provides a script for getting the image frames.  
+    
   Full downloaded image dataset can be find in 集群 10.1.75.35, /panzheng/dataset/stereo_dataset:  
             /test_image: files containg valid images for testing (test/train categorized by original author)  
             /train_image: files containg valid images for training (test/train categorized by original author)  
