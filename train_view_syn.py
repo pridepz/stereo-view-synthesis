@@ -14,7 +14,7 @@ from train_cnn_stereo import *
 
 flags = tf.app.flags
 #Input flags
-flags.DEFINE_string('path_to_pose', '/mnt/lustre/panzheng/dataset/valpos_train_i0', 'input pose directory')
+flags.DEFINE_string('path_to_pose', '/mnt/lustre/panzheng/dataset/stereo_dataset/valpos_train_i0', 'input pose directory')
 flags.DEFINE_string('path_to_image', '/mnt/lustre/panzheng/dataset/stereo_dataset/train_image', 'input image directory')
 flags.DEFINE_integer('num_epoch', 10, 'number of epochs')
 flags.DEFINE_integer('training_steps', 200000, 'num of training steps')
