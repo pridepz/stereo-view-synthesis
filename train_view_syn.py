@@ -25,7 +25,6 @@ flags.DEFINE_integer('height', 448, 'height')
 flags.DEFINE_integer('width', 448, 'width')
 flags.DEFINE_integer('height_re', 480, 'height resize')
 flags.DEFINE_integer('width_re', 480, 'width resize')
-flags.DEFINE_integer('num_pair', 100, 'number of pairs of images')
 flags.DEFINE_float('lr', 1e-4, 'learning rate')
 
 FLAGS = flags.FLAGS
