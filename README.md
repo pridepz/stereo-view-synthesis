@@ -33,7 +33,7 @@
    The python script for testing is test_view_syn.py.  
    One may input imageL, imageR, poseL, poseR, pose_target and obtain an image in the view of pose_target.  
      
-   The restored trained model example can be found in the file trained_imperfect_model. Due to the large amount of dataset images and time limit, the presented model was only trained with 1480 sets of training images (2 source images + 1 target image) for 2000 iterations.  
+   The restored trained model example can be found in the file trained_imperfect_model. Due to the large amount of dataset images and time limit, the presented model was only trained with 1480 sets of training images (2 source images + 1 target image) for 2000 iterations with learning rate 1e-4 and batch size 8.  
      
    An example tested result is in result_imperfect.zip. The testing frames are two images in the test image example image_data_example.zip. One can observe that although the rendered image is blurry, the position fits the desired novel view quite well.  
      
