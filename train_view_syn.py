@@ -220,7 +220,32 @@ def dep_warp_for(img, dep, pos1, pos2):
     ycor = np.clip(ycor, 0, h - 1 - 1e-5)
     warped_img = (img - img).astype(float)
     warp_weight = np.zeros(img.shape) + 1e-5
-    #bilinear
+#     #bilinear
+#     for j in range(h):
+#         for k in range(w):
+#             x = xcor[j][k]
+#             y = ycor[j][k]
+#             x0 = np.floor(x).astype(int)
+#             y0 = np.floor(y).astype(int)
+#             x1 = np.floor(x).astype(int) + 1
+#             y1 = np.floor(y).astype(int) + 1
+#             del_x = x - x0
+#             del_y = y - y0
+#             val = img[j][k]
+
+#             warped_img[y0][x0] += (1 - del_x) * (1 - del_y) * val
+#             warped_img[y0][x1] += del_x * (1 - del_y) * val
+#             warped_img[y1][x0] += (1 - del_x) * del_y * val
+#             warped_img[y1][x1] += del_x * del_y * val\
+
+#             warp_weight[y0][x0] += (1 - del_x) * (1 - del_y)
+#             warp_weight[y0][x1] += del_x * (1 - del_y)
+#             warp_weight[y1][x0] += (1 - del_x) * del_y
+#             warp_weight[y1][x1] += del_x * del_y
+#     warped_img = warped_img / warp_weight
+#     warped_img = np.clip(warped_img, 0, 255)
+
+    #nearest
     for j in range(h):
         for k in range(w):
             x = xcor[j][k]
@@ -232,42 +257,14 @@ def dep_warp_for(img, dep, pos1, pos2):
             del_x = x - x0
             del_y = y - y0
             val = img[j][k]
-
-            warped_img[y0][x0] += (1 - del_x) * (1 - del_y) * val
-            warped_img[y0][x1] += del_x * (1 - del_y) * val
-            warped_img[y1][x0] += (1 - del_x) * del_y * val
-            warped_img[y1][x1] += del_x * del_y * val\
-
-            warp_weight[y0][x0] += (1 - del_x) * (1 - del_y)
-            warp_weight[y0][x1] += del_x * (1 - del_y)
-            warp_weight[y1][x0] += (1 - del_x) * del_y
-            warp_weight[y1][x1] += del_x * del_y
-    warped_img = warped_img / warp_weight
-    warped_img = np.clip(warped_img, 0, 255)
-
-    # #nearest
-    # for j in range(h):
-    #     for k in range(w):
-    #         x = xcor[j][k]
-    #         y = ycor[j][k]
-    #         x0 = np.floor(x).astype(int)
-    #         y0 = np.floor(y).astype(int)
-    #         x1 = np.floor(x).astype(int) + 1
-    #         y1 = np.floor(y).astype(int) + 1
-    #         del_x = x - x0
-    #         del_y = y - y0
-    #         val = img[j][k]
-    #         if del_x < 0.5 and del_y < 0.5:
-    #             warped_img[y0][x0] = val
-    #         if del_x < 0.5 and del_y >= 0.5:
-    #             warped_img[y0][x1] = val
-    #         if del_x >= 0.5 and del_y < 0.5:
-    #             warped_img[y1][x0] = val
-    #         if del_x >= 0.5 and del_y >= 0.5:
-    #             warped_img[y1][x1] = val
-    # print 'xcor:', xcor
-    # print 'ycor:', ycor
-    #warped_img = bilinear_interp(img, xcor, ycor)
+            if del_x < 0.5 and del_y < 0.5:
+                warped_img[y0][x0] = val
+            if del_x < 0.5 and del_y >= 0.5:
+                warped_img[y0][x1] = val
+            if del_x >= 0.5 and del_y < 0.5:
+                warped_img[y1][x0] = val
+            if del_x >= 0.5 and del_y >= 0.5:
+                warped_img[y1][x1] = val
 
     return warped_img, pose
 
